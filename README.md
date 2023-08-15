@@ -1,5 +1,7 @@
-基于Torchserve的cropunet模型部署
+<big>**基于Torchserve的cropunet模型部署**</big>
+
 主要分成三部分：环境配置和文件准备、模型打包、模型部署和测试
+
 一、拉取torchserve官方镜像
 地址https://hub.docker.com/r/pytorch/torchserve/tags
 拉取了最新版本的镜像：docker pull pytorch/torchserve:latest
@@ -28,7 +30,9 @@ torch-model-archiver --model-name cropunet --version 1.0 --model-file unet.py --
 基于pytorch/torchserve:1.2镜像创建新的容器并设置端口号
 docker run --rm -p 8083:8080 -p 8081:8081 -p 8082:8082 -p 7070:7070 -p7071:7071 pytorch/torchserve:1.X
 进入容器，在对应目录下启动torchserve服务：
-torchserve --start --ncs --model-store cropunet/model-store --models cropunet=cropunet.mar注意：更换模型前一定要删除外面的logs!!!!!
+torchserve --start --ncs --model-store cropunet/model-store --models cropunet=cropunet.mar
+
+注意：更换模型前一定要删除外面的logs!!!!!
 
 五、模型推理：
 1.	在服务器上root下查看状态：
